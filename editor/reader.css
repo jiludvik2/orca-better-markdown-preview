@@ -372,6 +372,26 @@ body {
   color: var(--muted);
 }
 
+/* Inherit the editor palette; Pele keeps its matching default font metrics. */
+.cm-block-diagram .pele {
+  --pele-bg: var(--surface);
+  --pele-fg: var(--fg);
+  --pele-muted: var(--muted);
+  --pele-line: var(--fg);
+  --pele-surface: var(--bg);
+  --pele-surface-alt: var(--table-head);
+  --pele-border: var(--border);
+  --pele-accent: var(--blue);
+  --pele-series-1: var(--blue);
+  --pele-series-2: var(--pink);
+  --pele-series-3: var(--green);
+  --pele-series-4: var(--orange);
+  --pele-series-5: var(--purple);
+  --pele-series-6: var(--yellow);
+  --pele-series-7: var(--muted);
+  --pele-series-8: var(--fg);
+}
+
 .diagram-error {
   color: var(--pink);
   white-space: pre-wrap;

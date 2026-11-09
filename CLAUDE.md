@@ -1,10 +1,10 @@
-# Better Markdown Preview
+# Better Markdown Preview with Pele
 
-An Orca plugin (`execution: "sandboxed-ui"`): a custom editor for `.md`, `.markdown` and `.mdx` files. It is a CodeMirror 6 editor with live preview: Markdown symbols hide except on the line with the cursor, and tables, code blocks, Mermaid diagrams and front matter render as blocks until the cursor enters them. Published at github.com/Sumonta056/orca-better-markdown-preview; the community catalog lists it from the `orca-plugin` topic and each `v*` tag.
+An Orca plugin (`execution: "sandboxed-ui"`): a custom editor for `.md`, `.markdown` and `.mdx` files. It is a CodeMirror 6 editor with live preview: Markdown symbols hide except on the line with the cursor, and tables, code blocks, Pele diagrams using Mermaid syntax and front matter render as blocks until the cursor enters them. Fork at github.com/jiludvik2/orca-better-markdown-preview, based on Sumonta056/orca-better-markdown-preview. Do not publish catalog tags without explicit authorization.
 
 ## Invariants
 
-- The plugin id stays `better-markdown-preview`. The catalog key `sumonta056.better-markdown-preview` depends on it; the display name can change freely.
+- The plugin id stays `better-markdown-preview`. Preserve upstream compatibility; the fork display name identifies Pele.
 - A pushed tag is permanent. The catalog refuses a moved tag, so every change ships as a new version.
 - The frame has no network. Every library, font and image loads from the plugin folder by a relative URL.
 - The editor never rewrites text the user did not touch. Edits go to Orca as the full document through `orca.document.session`; outside writes come back through `onReplace` as a minimal change.

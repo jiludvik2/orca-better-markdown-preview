@@ -1,4 +1,6 @@
-# Better Markdown Preview
+# Better Markdown Preview with Pele
+
+A fork of [Sumonta056/Better Markdown Preview](https://github.com/Sumonta056/orca-better-markdown-preview) using [Pele](https://github.com/obsidianmd/pele) for Mermaid-syntax diagrams. Upstream authorship and MIT license are preserved.
 
 Read and edit Markdown in one view inside [Orca](https://github.com/stablyai/orca). The Markdown symbols hide until you edit a line, so a note reads like a finished page and stays editable.
 
@@ -13,21 +15,27 @@ Read and edit Markdown in one view inside [Orca](https://github.com/stablyai/orc
 - **Code blocks.** Syntax colors, a language label and a copy button.
 - **Callouts.** GitHub callouts: `> [!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WARNING]` and `[!CAUTION]`.
 - **Front matter.** YAML front matter shows as a card.
-- **Mermaid.** ` ```mermaid ` blocks draw as diagrams.
+- **Pele diagrams.** ` ```mermaid ` blocks draw locally with Pele 1.13.0.
 - **Live editing.** Type anywhere. Click a table, code block, diagram or front matter card to edit its source.
 - **Zoom.** Use the `− 100% +` control in the top right corner, or pinch on the trackpad.
 - **Readable type.** Body text uses the Figtree font, included in the plugin.
 
 ![A table and a TypeScript code block](images/tables.png)
 
-![A front matter card and a Mermaid flowchart](images/diagram.png)
+![Front matter card and Pele-rendered flowchart](images/diagram.png)
 
 ## Install
 
-1. In Orca, open **Settings**, then **Plugins**.
-2. Search for **Better Markdown Preview** and install it.
-3. Open a `.md`, `.markdown` or `.mdx` file.
-4. In the view toggle at the top right of the editor, click the **first icon** (the pen nib). Its tooltip says **Preview**.
+This fork is not published to the community catalog. In Orca, open **Settings → Plugins → Add plugin → From a Git URL** and use:
+
+```text
+https://github.com/jiludvik2/orca-better-markdown-preview#main
+```
+
+Review the requested access before enabling it. For development, clone this fork and follow the checks below. The plugin ID remains `better-markdown-preview`; the fork is identified by its repository owner.
+
+1. Open a `.md`, `.markdown` or `.mdx` file.
+2. In the view toggle at the top right of the editor, click the **first icon** (the pen nib). Its tooltip says **Preview**.
 
    ![The editor view toggle. The first icon, a pen nib, opens Better Markdown Preview](images/view-toggle.png)
 
@@ -54,6 +62,13 @@ Orca opens Markdown files in Source first, and a plugin cannot change that. Clic
 - **No network.** Orca runs plugins without network access. Images from web URLs do not load.
 - **No raw HTML.** HTML in the Markdown shows as text.
 - **Agent edits.** When an agent writes the file while you type, the preview keeps both changes if they touch different lines. If both change the same lines, the agent's version wins.
+
+## What's new in 1.1.0
+
+- Replace Mermaid.js with the bundled Pele 1.13.0 renderer, retaining `mermaid` fences and source editing.
+- Map diagram colors to the editor palette in light and dark themes. Repeated diagrams get independent SVG IDs and accessible labels.
+- Show escaped diagram errors and retry after a library load failure. Diagram links and images are disabled; all rendering stays offline.
+- Pele targets Mermaid 12.1 syntax; complete Mermaid 12.3 feature parity is not promised. See [Pele's compatibility notes](https://github.com/obsidianmd/pele#compatibility) for renderer differences.
 
 ## What's new in 1.0.4
 
@@ -83,6 +98,7 @@ Orca opens Markdown files in Source first, and a plugin cannot change that. Clic
 ## Develop
 
 ```sh
+orca plugin validate .
 orca plugin check .
 orca plugin dev load "$PWD"
 orca plugin shot local.better-markdown-preview --editor "$PWD/samples/tables.md" --width 1600 --height 1000
@@ -90,7 +106,15 @@ orca plugin shot local.better-markdown-preview --editor "$PWD/samples/tables.md"
 
 `editor/main.ts` starts the editor, keeps the file in sync with Orca and owns the zoom control. `editor/live.ts` decides which parts of the document show rendered and which show as Markdown. `editor/render.ts` draws tables, code blocks, front matter and diagrams. `editor/merge.ts` combines your edits with outside changes. `editor/reader.css` holds every color and size.
 
-`lib/` holds markdown-it 15.0.3, highlight.js 11.11.1, Mermaid 12.3.0 (the tiny build) and a CodeMirror 6 bundle. Run `scripts/build-codemirror.sh` to rebuild `lib/codemirror.mjs` from `scripts/codemirror-entry.js`.
+`lib/` holds markdown-it 15.0.3, highlight.js 11.11.1, Pele 1.13.0 and a CodeMirror 6 bundle. Reproduce Pele from the pinned npm distribution with `scripts/vendor-pele.sh`; hashes and full notices are in `THIRD-PARTY-NOTICES.md`. Run `scripts/build-codemirror.sh` to rebuild `lib/codemirror.mjs` from `scripts/codemirror-entry.js`.
+
+The optional browser checks exercise the shipped `editor/render.ts` and browser global without enabling the plugin in Orca. Supply existing TypeScript, Puppeteer Core and Chrome paths (no project dependency installation):
+
+```sh
+node scripts/test-diagrams.mjs --typescript /path/to/typescript --puppeteer /path/to/puppeteer-core --chrome /path/to/chrome
+```
+
+These checks supplement the required Orca reload, idle-state and screenshot checks in `CLAUDE.md`; they do not verify Orca integration. The screenshots show this fork running inside Orca.
 
 ## License
 
