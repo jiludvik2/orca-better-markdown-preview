@@ -29,8 +29,8 @@
     },
     {
       "path": "images/diagram.png",
-      "alt": "Upstream reference image of a front matter card, a Mermaid flowchart and a numbered list",
-      "caption": "Upstream preview: front matter and diagram"
+      "alt": "A front matter card, a Pele-rendered flowchart and a numbered list",
+      "caption": "Front matter and Pele diagram"
     }
   ],
   "contributes": {

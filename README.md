@@ -22,13 +22,17 @@ Read and edit Markdown in one view inside [Orca](https://github.com/stablyai/orc
 
 ![A table and a TypeScript code block](images/tables.png)
 
-The diagram image below is retained from upstream; Pele diagram geometry differs.
-
-![Upstream front matter card and Mermaid flowchart](images/diagram.png)
+![Front matter card and Pele-rendered flowchart](images/diagram.png)
 
 ## Install
 
-This fork is not published to the community catalog. Clone this repository and follow the development checks below; approve the development plugin only after reviewing Orca's requested access. For the review branch, use `git clone --branch release/v1.1.0 https://github.com/jiludvik2/orca-better-markdown-preview.git`. The plugin ID remains `better-markdown-preview`, so use one version at a time.
+This fork is not published to the community catalog. In Orca, open **Settings → Plugins → Add plugin → From a Git URL** and use:
+
+```text
+https://github.com/jiludvik2/orca-better-markdown-preview#main
+```
+
+Review the requested access before enabling it. For development, clone this fork and follow the checks below. The plugin ID remains `better-markdown-preview`; the fork is identified by its repository owner.
 
 1. Open a `.md`, `.markdown` or `.mdx` file.
 2. In the view toggle at the top right of the editor, click the **first icon** (the pen nib). Its tooltip says **Preview**.
@@ -110,7 +114,7 @@ The optional browser checks exercise the shipped `editor/render.ts` and browser 
 node scripts/test-diagrams.mjs --typescript /path/to/typescript --puppeteer /path/to/puppeteer-core --chrome /path/to/chrome
 ```
 
-These checks supplement the required Orca reload, idle-state and screenshot checks in `CLAUDE.md`; they do not verify Orca integration. The retained images have not been regenerated for this fork.
+These checks supplement the required Orca reload, idle-state and screenshot checks in `CLAUDE.md`; they do not verify Orca integration. The screenshots show this fork running inside Orca.
 
 ## License
 
