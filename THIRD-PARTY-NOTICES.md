@@ -67,14 +67,25 @@ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ```
 
-## Mermaid 12.3.0 (tiny build)
+## Pele 1.13.0
 
-`lib/mermaid.tiny.js`, the `@mermaid-js/tiny` build
+`lib/pele.global.js` is the unmodified `dist/pele.global.js` from the published
+[`pele@1.13.0`](https://www.npmjs.com/package/pele/v/1.13.0) package
+([source](https://github.com/obsidianmd/pele)). `lib/pele.LICENSE` contains the complete
+MIT and Lucide ISC notices, reproduced below.
+
+Reproduce with `scripts/vendor-pele.sh`. The script downloads the pinned npm tarball,
+verifies its SHA-256 and the extracted files, then copies only the runtime and license.
+No npm installation or runtime network access is needed.
+
+- Tarball SHA-256: `00f879d86c5a6ece897ef70e18fd228a9952bba338a0cb1293b373900d7414bd`
+- Runtime SHA-256: `0b0a46c57a5a6971670c09f5ec4066705bd78505f90fd11adf6260325efa0910`
+- License SHA-256: `311bccc30de6f7b9cbfb64232bb0c911ccb2191abe316550813ae25b2c7925b9`
 
 ```
-The MIT License (MIT)
+MIT License
 
-Copyright (c) 2014 - 2022 Knut Sveidqvist
+Copyright (c) 2026 kepano
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -93,6 +104,25 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+The reset icon of the zoom controls is "rotate-ccw" from Lucide v1.14.0
+(https://lucide.dev), under the ISC License:
+
+Copyright (c) 2026 Lucide Icons and Contributors
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 ```
 
 ## CodeMirror 6
